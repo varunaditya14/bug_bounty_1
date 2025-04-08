@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Test Cases</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Test Cases Results</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Status Code</th>
+                    <th>Error Message</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="test-cases-body">
+                <!-- Test cases will be populated here -->
+            </tbody>
+        </table>
+        <div>
+            <a href="{{ url_for('index') }}">Back to URL Testing</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch test cases from the server
+            fetch('/test-cases-data')  // Adjust the endpoint as necessary
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('test-cases-body');
+                    tableBody.innerHTML = ''; // Clear previous results
+
+                    // Populate the table with test case data
+                    data.forEach(testCase => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${testCase.id}</td>
+                            <td>${testCase.url}</td>
+                            <td>${testCase.status_code}</td>
+                            <td>${testCase.error_message ? testCase.error_message : 'N/A'}</td>
+                            <td>${testCase.timestamp}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching test cases:', error);
+                });
+        });
+    </script>
+</body>
+</html>
