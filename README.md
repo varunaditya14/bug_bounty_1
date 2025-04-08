@@ -10,7 +10,7 @@ A Python-based tool designed to detect and predict website vulnerabilities while
 
 
 !file path 
-C:\Users\varun\AppData\Local\Programs\Python\Python311
+C:\Users\<user>\AppData\Local\Programs\Python\Python311
 
 
 !open project in visual studio code 
