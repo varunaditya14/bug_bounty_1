@@ -1,0 +1,2 @@
+# bug_bounty_1
+ A Python-based tool designed to detect and predict website vulnerabilities while automatically generating corresponding test cases. This project leverages data analysis, machine learning techniques, and security testing practices to help web developers and security analysts identify potential security flaws, predict emerging threats, and streamline the validation process with auto-generated test cases.
